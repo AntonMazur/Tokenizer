@@ -46,17 +46,10 @@ extension MainViewController: UITextFieldDelegate {
     private func separate(text: String, with separators: [String]) -> String {
         var text = text
         separators.forEach { separator in
-            guard separator.isSeparatedWord(in: text) else { return }
+            let separator = " \(separator) "
             text = text.replacingOccurrences(of: separator, with: "\n\(separator)", options: .caseInsensitive)
         }
         
         return text
-    }
-}
-
-private extension String {
-    func isSeparatedWord(in text: String) -> Bool {
-        let separator = " \(self) "
-        return text.range(of: separator, options: .caseInsensitive) != nil
     }
 }
